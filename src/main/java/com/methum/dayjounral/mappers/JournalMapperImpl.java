@@ -3,10 +3,12 @@ package com.methum.dayjounral.mappers;
 import com.methum.dayjounral.dtos.JournalRequestDto;
 import com.methum.dayjounral.dtos.JournalResponseDto;
 import com.methum.dayjounral.model.Journal;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+@Component
 public class JournalMapperImpl implements JournalMapper{
 
     @Override
