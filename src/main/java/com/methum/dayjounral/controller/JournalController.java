@@ -8,10 +8,7 @@ import com.methum.dayjounral.model.Journal;
 import com.methum.dayjounral.service.JournalService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -44,6 +41,7 @@ public class JournalController {
     }
 
 
+    @PostMapping("/journals")
     public ResponseEntity<String> createJournal(@RequestBody JournalRequestDto requestDto){
 
         if (requestDto!=null){
