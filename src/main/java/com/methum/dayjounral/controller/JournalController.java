@@ -20,9 +20,12 @@ public class JournalController {
 
     private final JournalMapper journalMapper;
 
+
     public JournalController(JournalService journalService, JournalMapper journalMapper) {
         this.journalService = journalService;
         this.journalMapper = journalMapper;
+
+
     }
 
 
@@ -58,6 +61,7 @@ public class JournalController {
     }
 
 
+    @PutMapping("/journals")
     public ResponseEntity<String> updateJournal(@RequestBody JournalRequestDto requestDto){
 
         if (requestDto!=null){
@@ -69,6 +73,20 @@ public class JournalController {
 
         return new ResponseEntity<>("Failed to Update", HttpStatus.NO_CONTENT);
 
+    }
+
+    @DeleteMapping("/journals/{id}")
+    public ResponseEntity<String> deleteJournal(@PathVariable Long id){
+
+        Journal journal = journalService.findJournalById(id);
+
+        if (journal != null) {
+            journal.setDeleted(true);
+            journalService.updateJournals(journal);
+            return new ResponseEntity<>("Deleted Successfully", HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>("Failed to Delete", HttpStatus.NOT_FOUND);
     }
 
 

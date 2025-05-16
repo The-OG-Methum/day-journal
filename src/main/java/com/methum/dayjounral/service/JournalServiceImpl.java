@@ -40,5 +40,15 @@ public class JournalServiceImpl implements  JournalService{
         return null;
     }
 
+    @Override
+    public Journal findJournalById(Long id) {
+        return repo.findById(id).orElse(null);
+    }
+
+    @Override
+    public void deleteJournal(Long id) {
+
+    }
+
 
 }

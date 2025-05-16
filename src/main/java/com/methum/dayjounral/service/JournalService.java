@@ -15,4 +15,8 @@ public interface JournalService {
     Journal createJournals(Journal journal);
 
     Journal updateJournals(Journal journal);
+
+    Journal findJournalById(Long id);
+
+    void deleteJournal(Long id);
 }
