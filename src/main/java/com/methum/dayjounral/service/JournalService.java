@@ -13,4 +13,6 @@ public interface JournalService {
     List<Journal> getAllJournals();
 
     Journal createJournals(Journal journal);
+
+    Journal updateJournals(Journal journal);
 }

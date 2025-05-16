@@ -44,7 +44,8 @@ public class JournalMapperImpl implements JournalMapper{
 
     public String formattedDate(LocalDateTime time){
 
-        return  DateTimeFormatter.ISO_DATE_TIME.format(time);
+        DateTimeFormatter formatter =DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        return time.format(formatter);
 
     }
 }

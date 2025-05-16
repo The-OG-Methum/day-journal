@@ -56,4 +56,20 @@ public class JournalController {
         return new ResponseEntity<>("Failed to create!",HttpStatus.BAD_REQUEST);
 
     }
+
+
+    public ResponseEntity<String> updateJournal(@RequestBody JournalRequestDto requestDto){
+
+        if (requestDto!=null){
+
+            Journal updatedJournal = journalService.updateJournals(journalMapper.toEntity(requestDto));
+
+            return new ResponseEntity<>("Updated Successfully",HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>("Failed to Update", HttpStatus.NO_CONTENT);
+
+    }
+
+
 }

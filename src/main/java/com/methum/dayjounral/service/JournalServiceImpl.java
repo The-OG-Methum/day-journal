@@ -31,5 +31,14 @@ public class JournalServiceImpl implements  JournalService{
         return null;
     }
 
+    @Override
+    public Journal updateJournals(Journal journal) {
+        if (journal != null){
+            return repo.save(journal);
+        }
+
+        return null;
+    }
+
 
 }
