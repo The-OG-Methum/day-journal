@@ -19,6 +19,7 @@ public class JournalMapperImpl implements JournalMapper{
                 : null;
 
         return new JournalResponseDto(
+                journal.getId(),
                 journal.getTitle(),
                 journal.getContent(),
                 formattedCreatedAt
@@ -27,6 +28,7 @@ public class JournalMapperImpl implements JournalMapper{
 
     @Override
     public Journal toEntity(JournalRequestDto requestDto) {
+
 
         return new Journal(
                 null,

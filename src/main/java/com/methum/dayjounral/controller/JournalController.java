@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin
 public class JournalController {
 
     private final JournalService journalService;
@@ -72,6 +73,18 @@ public class JournalController {
         }
 
         return new ResponseEntity<>("Failed to Update", HttpStatus.NO_CONTENT);
+
+    }
+
+    @GetMapping("/journals/{id}")
+    public ResponseEntity<JournalResponseDto>  getJournalByID(@PathVariable Long id){
+        Journal journal = journalService.findJournalById(id);
+        JournalResponseDto responseDto = journalMapper.toResponse(journal);
+        if (journal!=null && journal.getId().equals(id)){
+            return new ResponseEntity<>(responseDto,HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
     }
 

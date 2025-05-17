@@ -5,6 +5,8 @@ import com.methum.dayjounral.model.Journal;
 import com.methum.dayjounral.repository.JournalRepo;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -18,7 +20,11 @@ public class JournalServiceImpl implements  JournalService{
 
     @Override
     public List<Journal> getAllJournals() {
-        return repo.findAll() ;
+
+
+        return repo.findAll().stream()
+                .filter(journal -> !journal.isDeleted())
+                .toList();
     }
 
     @Override
@@ -47,6 +53,8 @@ public class JournalServiceImpl implements  JournalService{
 
     @Override
     public void deleteJournal(Long id) {
+
+        // soft delete
 
     }
 

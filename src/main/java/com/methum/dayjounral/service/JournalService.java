@@ -19,4 +19,6 @@ public interface JournalService {
     Journal findJournalById(Long id);
 
     void deleteJournal(Long id);
+
+
 }
